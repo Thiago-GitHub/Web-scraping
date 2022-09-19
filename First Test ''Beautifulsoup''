@@ -1,0 +1,8 @@
+import requests
+from bs4 import BeautifulSoup
+URL="http://servnotes.eletrosul.gov.br/Suprimentos/Compras.nsf/XP_ListarRegistros.xsp?tp=compras"
+pagina = requests.get(URL)
+soup = BeautifulSoup(pagina.content, "html.parser")
+for x in range (1,len(soup)):
+  resultado = soup.find("tbody")
+print(resultado.text)
